@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jakub - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e6ed;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .name {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4ecdc4;
+            padding-bottom: 10px;
+        }
+
+        .profile-text {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #b8c5d1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .skill-category h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+	.skill-item {
+	    display: grid;
+	    grid-template-columns: 1fr auto;
+	    gap: 20px;
+	    align-items: center;
+	    padding: 8px 0;
+	    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.skill-info {
+	    min-width: 0;
+	}
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            color: #e0e6ed;
+            font-weight: 500;
+        }
+
+        .skill-experience {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+	    white-space: nowrap;
+	    min-width: 80px;
+	    text-align: right;
+	    flex-shrink: 0;
+        }
+
+        .skill-details {
+            font-size: 0.85rem;
+            color: #96ceb4;
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .project {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(78, 205, 196, 0.2);
+        }
+
+        .project-title {
+            color: #4ecdc4;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .project-period {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #b8c5d1;
+            line-height: 1.7;
+        }
+
+        .strengths-list {
+            list-style: none;
+        }
+
+        .strengths-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8c5d1;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .strengths-list li:before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-size: 1.2rem;
+        }
+
+        .industries-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .industry-item {
+            background: rgba(150, 206, 180, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(150, 206, 180, 0.3);
+            text-align: center;
+            color: #96ceb4;
+            font-weight: 500;
+        }
+
+        .methodologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .methodology-tag {
+            background: rgba(69, 183, 209, 0.2);
+            color: #45b7d1;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(69, 183, 209, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <header class="header">
+	  <div class="header-content">
+        <img src="oblicej.png" width="200px" alt="Jakub's Photo" class="profile-photo">
+        <div class="header-text">
+            <h1 class="name">Jakub</h1>
+            <p class="title">Full Stack Developer & Cloud Engineer</p>
+        </div>
+	  </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Developer Profile</h2>
+            <p class="profile-text">
+              Results-oriented developer experienced in leading cloud migrations (GCP, some AWS).
+	      <br>
+	      Successfully introduced Clojure for critical tooling, leading to ~5 years of professional Clojure development experience, including >3 years of dedicated 100% Clojure/ClojureScript work (backend/frontend) on a BIM system at Flexiana.
+	<br> Enthusiastic about the Clojure and Emacs ecosystems and adopting new tech, with a backend focus. Drives project success through profound dedication, strong personal ownership, and insightful problem identification.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Recent Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3 class="project-title">BIM System</h3>
+                    <p class="project-period">2023 - 2025</p>
+                    <p class="project-description">
+                        Full-stack Clojure & ClojureScript web application & Revit plugin. The project utilizes various technologies, including Ring, Reitit, Re-frame, UIX, Instaparse, O'doyle rules, and PostgreSQL as the database.
+                    </p>
+                </div>
+                <div class="project">
+                    <h3 class="project-title">DWH Migration to GCP</h3>
+                    <p class="project-period">2021 - 2023</p>
+                    <p class="project-description">
+                        Led end-to-end migration of >300 ETL jobs from legacy on-premise infrastructure to Google Cloud Platform. Designed the target cloud architecture, set up GCP environments using Terraform, implemented CI/CD pipelines, and orchestrated the complete migration strategy. Established monitoring, logging, and cost optimization practices for the new cloud-native data warehouse solution based on CloudSQL and BigQuery. Clojure has been used to develop tools for data migrations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">ClojureScript</div>
+                            <div class="skill-details">Re-frame, Reagent, Ornament, Girrouette, Replicant, ...</div>
+                        </div>
+                        <span class="skill-experience">4 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">(Clojure)Dart</div>
+                            <div class="skill-details">Re-dash, Flutter</div>
+                        </div>
+                        <span class="skill-experience">2 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">HTML / CSS / JS</div>
+                            <div class="skill-details">React.js, TailwindCSS</div>
+                        </div>
+                        <span class="skill-experience">8 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Data Reporting</div>
+                            <div class="skill-details">QlikView, Spotfire, Tableau</div>
+                        </div>
+                        <span class="skill-experience">5 years</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Clojure</div>
+                            <div class="skill-details">Ring, Compojure, Reitit, Integrant, Instaparse, Next.jdbc, Malli, Telemere, Scicloj.ml, HoneySQL, Hiccup, ...</div>
+                        </div>
+                        <span class="skill-experience">6 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Python</div>
+                            <div class="skill-details">Flask, Airflow, Pandas, SQLAlchemy, Beautiful Soup</div>
+                        </div>
+                        <span class="skill-experience">6 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-experience">8 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">ETL</div>
+                            <div class="skill-details">Apache Spark, Apache Airflow, NIFI</div>
+                        </div>
+                        <span class="skill-experience">5 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Datalog</span>
+                        <span class="skill-experience">1 year</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Database</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">PostgreSQL, SQLite</span>
+                        <span class="skill-experience">8 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">BigQuery</span>
+                        <span class="skill-experience">2 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Hadoop, Redis, Datalevin, Datascript</span>
+                        <span class="skill-experience">1 year</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">CI/CD & DevOps</div>
+                            <div class="skill-details">GitLab, GitHub, Terraform, Ansible, Docker/Kubernetes</div>
+                        </div>
+                        <span class="skill-experience">4 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Cloud Platforms</div>
+                            <div class="skill-details">GCP, AWS, OpenStack</div>
+                        </div>
+                        <span class="skill-experience">4 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Operating Systems</div>
+                            <div class="skill-details">Linux, MacOS, Windows</div>
+                        </div>
+                        <span class="skill-experience"></span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">IDEs / Editors</div>
+                            <div class="skill-details">Emacs, VS Code, IntelliJ</div>
+                        </div>
+                        <span class="skill-experience"></span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Build Tools & Frameworks</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Clojure Build Tools</div>
+                            <div class="skill-details">Leiningen, Clojure CLI/deps.edn</div>
+                        </div>
+                        <span class="skill-experience">6 years</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <div class="skill-name">Web Frameworks</div>
+                            <div class="skill-details">Luminus, Duct, Xiana, Biff</div>
+                        </div>
+                        <span class="skill-experience">4 years</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Methodologies & Practices</h2>
+            <div class="methodologies">
+                <span class="methodology-tag">TDD</span>
+                <span class="methodology-tag">Agile</span>
+                <span class="methodology-tag">DevOps</span>
+                <span class="methodology-tag">FinOps</span>
+                <span class="methodology-tag">AI</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Industry Experience</h2>
+            <div class="industries-list">
+                <div class="industry-item">Automotive</div>
+                <div class="industry-item">Architecture, Engineering, and Construction</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Core Strengths</h2>
+            <ul class="strengths-list">
+                <li>Identifying potential application issues and working to enhance systems beyond initial specifications, focusing on improving quality and performance.</li>
+                <li>Effectively learning new technologies which translates into good adaptability when addressing diverse client project requirements and their specific tech stacks.</li>
+                <li>Leading teams, with an ability to connect well with people and facilitate clear agreements.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
